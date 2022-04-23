@@ -1,0 +1,61 @@
+.number__small {
+  background-color: gray;
+
+  text-align: center;
+  display: inline-block;
+  margin: 1px;
+  padding: 0;
+}
+.number__small--active {
+  background-color: lightcyan;
+  height: 17px;
+  width: 17px;
+}
+.number__small--deactive {
+  background-color: lightgray;
+  border-color: lightgray;
+  height: 15px;
+  width: 19px;
+
+  border: 0;
+  margin: auto;
+}
+
+.nunber--unsolve {
+  height: 57px;
+  width: 57px;
+  align-items: center;
+  border-style: solid;
+  border-color: gray;
+  background-color: lightgray;
+  margin: 0px;
+  display: inline-block;
+}
+.number--solve {
+  height: 56px;
+  width: 57px;
+  font-size: 57px;
+  border-style: solid;
+  border-color: gray;
+  text-align: center;
+  display: inline-block;
+}
+.block {
+  height: 195px;
+  width: 195px;
+  display: block;
+  margin: 0;
+  border-style: solid;
+  border-color: black;
+  background-color: lightgray;
+  display: inline-block;
+}
+.play {
+  height: 590px;
+  width: 610px;
+  display: block;
+  margin: 0;
+  border-style: solid;
+  border-color: black;
+  background-color: lightgray;
+}
