@@ -32,7 +32,7 @@
   display: inline-block;
 }
 .number--solve {
-  height: 56px;
+  height: 57px;
   width: 57px;
   font-size: 57px;
   border-style: solid;
@@ -41,8 +41,8 @@
   display: inline-block;
 }
 .block {
-  height: 195px;
-  width: 195px;
+  height: 189px;
+  width: 189px;
   display: block;
   margin: 0;
   border-style: solid;
@@ -51,8 +51,8 @@
   display: inline-block;
 }
 .play {
-  height: 590px;
-  width: 610px;
+  height: 585px;
+  width: 585px;
   display: block;
   margin: 0;
   border-style: solid;
