@@ -27,7 +27,6 @@ class App extends Component {
     this.setState(this.preGame);
   }
   preGame = (state) => {
-    console.log(state);
     state.answers.forEach((arrBig, iBig) => {
       arrBig.forEach((x, iSmall) => {
         if (x.length === 0)
@@ -36,8 +35,6 @@ class App extends Component {
             chosen: undefined,
           };
       });
-
-      console.log(state);
       return state;
     });
   };
