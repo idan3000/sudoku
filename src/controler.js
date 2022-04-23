@@ -1,25 +1,29 @@
-// import React from "react";
+const calcNewOptions = (number, value) => {
+  const index = number.options.indexOf(value);
+  const optionsNew = (number.options[index] = 0);
+  return optionsNew;
+};
 
 export const pick = function (id, value) {
   this.setState((state) => {
     state.isRedy = false;
     state.answers[id.blockId][id.numberId].chosen = value;
-    calcClick(state, id, value);
+    evreChange(state, id, value);
     return state;
   });
 };
 
-const calcClick = (state, id, value) => {
+const evreChange = (state, id, value) => {
   state.isRedy = true;
   removeFromeBlock(state.answers[id.blockId], value);
   removeFromeAxisX(state.answers, id, value);
   removeFromeAxisY(state.answers, id, value);
   const data = chekIfSolve(state);
-  if (!state.isRedy) calcClick(state, data.id, data.val);
+  if (!state.isRedy) evreChange(state, data.id, data.val);
 };
 
 const removeFromeBlock = (state, value) =>
-  state.forEach((number) => optionsNewCalc(number, value));
+  state.forEach((number) => calcNewOptions(number, value));
 
 const chekIfSolve = (state) => {
   let val;
@@ -40,50 +44,51 @@ const chekIfSolve = (state) => {
 
   return { val, id };
 };
+
+const calcBlockAxisx = (blockId) => {
+  if (blockId <= 2) return [0, 1, 2];
+  if (blockId >= 3 && blockId <= 5) return [3, 4, 5];
+  if (blockId >= 6) return [6, 7, 8];
+};
+
 const removeFromeAxisX = (state, id, value) => {
-  const blockAxis = [];
-  if (id.blockId <= 2) blockAxis.push(0, 1, 2);
-  if (id.blockId >= 3 && id.blockId <= 5) blockAxis.push(3, 4, 5);
-  if (id.blockId >= 6) blockAxis.push(6, 7, 8);
+  const blockAxis = calcBlockAxisx(id.blockId);
 
   blockAxis.forEach((block) => {
     state[block].forEach((number, i) => {
       if (i <= 2 && id.numberId <= 2) {
-        optionsNewCalc(number, value);
+        calcNewOptions(number, value);
       }
       if (i >= 3 && id.numberId >= 3 && i <= 5 && id.numberId <= 5) {
-        optionsNewCalc(number, value);
+        calcNewOptions(number, value);
       }
       if (i >= 6 && id.numberId >= 6) {
-        optionsNewCalc(number, value);
+        calcNewOptions(number, value);
       }
     });
   });
   return state;
 };
 
-const optionsNewCalc = (number, value) => {
-  const index = number.options.indexOf(value);
-  const optionsNew = (number.options[index] = 0);
-  return optionsNew;
+const calcBlockAxisY = (blockId) => {
+  if (blockId % 3 === 0) return [0, 3, 6];
+  if (blockId % 3 === 1) return [1, 4, 7];
+  if (blockId % 3 === 2) return [2, 5, 8];
 };
 
 const removeFromeAxisY = (state, id, value) => {
-  let blockAxis;
-  if (id.blockId % 3 === 0) blockAxis = [0, 3, 6];
-  if (id.blockId % 3 === 1) blockAxis = [1, 4, 7];
-  if (id.blockId % 3 === 2) blockAxis = [2, 5, 8];
+  const blockAxis = calcBlockAxisY(id.blockId);
 
   blockAxis.forEach((block) =>
     state[block].forEach((number, i) => {
       if (id.numberId % 3 === 0 && i % 3 === 0) {
-        optionsNewCalc(number, value);
+        calcNewOptions(number, value);
       }
       if (id.numberId % 3 === 1 && i % 3 === 1) {
-        optionsNewCalc(number, value);
+        calcNewOptions(number, value);
       }
       if (id.numberId % 3 === 2 && i % 3 === 2) {
-        optionsNewCalc(number, value);
+        calcNewOptions(number, value);
       }
     })
   );
@@ -101,6 +106,3 @@ export const preGame = () => {
     )
   );
 };
-/*
- 
-*/

@@ -6,6 +6,7 @@ class App extends Component {
   state = {
     answers: preGame(),
     isRedy: true,
+    logIt: 0,
   };
 
   render() {
