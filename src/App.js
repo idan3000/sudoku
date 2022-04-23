@@ -1,52 +1,21 @@
 import React, { Component } from "react";
 import Block from "./components/Block";
-import { pick } from "./controler";
+import { pick, preGame } from "./controler";
 
 class App extends Component {
   state = {
-    arr19: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    answers: [
-      [[], [], [], [], [], [], [], [], []],
-      [[], [], [], [], [], [], [], [], []],
-      [[], [], [], [], [], [], [], [], []],
-      [[], [], [], [], [], [], [], [], []],
-      [[], [], [], [], [], [], [], [], []],
-      [[], [], [], [], [], [], [], [], []],
-      [[], [], [], [], [], [], [], [], []],
-      [[], [], [], [], [], [], [], [], []],
-      [[], [], [], [], [], [], [], [], []],
-    ],
-    temp: [],
+    answers: preGame(),
     isRedy: true,
-    logIt: 0,
-  };
-  // constructor() {
-  //   super();
-  // }
-  componentWillMount() {
-    this.setState(this.preGame);
-  }
-  preGame = (state) => {
-    state.answers.forEach((arrBig, iBig) => {
-      arrBig.forEach((x, iSmall) => {
-        if (x.length === 0)
-          state.answers[iBig][iSmall] = {
-            options: [...state.arr19],
-            chosen: undefined,
-          };
-      });
-      return state;
-    });
   };
 
   render() {
     return (
       <div className="play">
-        {this.state.answers.map((x, iBig) => (
+        {this.state.answers.map((x, index) => (
           <Block
             data={x}
-            key={iBig}
-            id={{ blockId: iBig }}
+            key={index}
+            id={{ blockId: index }}
             pick={pick.bind(this)}
           />
         ))}
